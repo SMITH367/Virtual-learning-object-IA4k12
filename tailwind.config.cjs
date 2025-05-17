@@ -1,7 +1,12 @@
+// tailwind.config.js
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}", // Incluye todos tus componentes
+  ],
   theme: {
     extend: {},
   },
   plugins: [],
 };
+
