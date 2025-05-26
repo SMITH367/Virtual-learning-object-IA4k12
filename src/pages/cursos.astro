@@ -1,0 +1,29 @@
+---
+import "../styles/tailwind.css";
+import { trivias } from "../data/trivia.js";
+---
+<html lang="es">
+  <head>
+    <title>Cursos</title>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-indigo-100 to-white pt-16 sm:pt-10 p-10 bg">
+    <div class="container mx-auto px-4 pt-24 sm:pt-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-center mb-30 sm:mb-20 text-indigo-700 animate-bounce">
+        Cursos Disponibles
+      </h1>
+
+      <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+        {trivias.map(({ course }, index) => (
+          <a
+            href={`/curso/${course}/trivia`}
+            class={`w-44 text-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 fade-in-up`}
+            style={`animation-delay: ${index * 0.2}s`}
+          >
+            Ir al Curso {course.charAt(0).toUpperCase() + course.slice(1)}
+          </a>
+        ))}
+      </div>
+    </div>
+  </body>
+</html>
+
