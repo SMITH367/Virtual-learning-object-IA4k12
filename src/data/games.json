@@ -1,1 +1,13 @@
-{ "games": [ { "id": 1, "name": "Memory Game" } ] }
+{
+  "games": [
+    {
+      "id": "classification",
+      "title": "Clasificación con Machine Learning",
+      "description": "OVA para aprender clasificación con algoritmos de IA",
+      "category": "Ciencia de Datos",
+      "path": "/games/classification",
+      "image": "/images/games/classification.jpg",
+      "modules": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    }
+  ]
+}

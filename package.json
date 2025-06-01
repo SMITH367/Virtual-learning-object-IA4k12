@@ -9,8 +9,10 @@
   "dependencies": {
     "@astrojs/react": "^4.2.7",
     "@astrojs/tailwind": "^6.0.2",
+    "@tensorflow/tfjs": "^4.22.0",
     "astro": "^4.0.0",
-    "framer-motion": "^12.11.4",
+    "framer-motion": "^12.15.0",
+    "lucide-react": "^0.511.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
