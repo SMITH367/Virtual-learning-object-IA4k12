@@ -1,38 +1,20 @@
 {
   "items": [
-    { "image": "/images/ova/a1.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/a2.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/a3.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/bp3.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/bp4.png", "label": "no-manzana" },
-    { "image": "/images/ova/bp5.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/g6.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/g7.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/g8.jpeg", "label": "no-manzana" },
     { "image": "/images/ova/m1.jpeg", "label": "manzana" },
-    { "image": "/images/ova/m2.jpeg", "label": "manzana" },
+    { "image": "/images/ova/a1.jpeg", "label": "no-manzana" },
+    { "image": "/images/ova/bp5.jpeg", "label": "no-manzana" },    
+    { "image": "/images/ova/m6.jpeg", "label": "manzana" },
+    { "image": "/images/ova/g5.jpeg", "label": "no-manzana" },
     { "image": "/images/ova/m3.jpeg", "label": "manzana" },
     { "image": "/images/ova/m7.jpeg", "label": "manzana" },
-    { "image": "/images/ova/m8.jpeg", "label": "manzana" },
+    { "image": "/images/ova/g8.jpeg", "label": "no-manzana" },
+    { "image": "/images/ova/g6.jpeg", "label": "no-manzana" },
+    { "image": "/images/ova/bp3.jpeg", "label": "no-manzana" },
+    { "image": "/images/ova/g7.jpeg", "label": "no-manzana" },
+    { "image": "/images/ova/m2.jpeg", "label": "manzana" },
     { "image": "/images/ova/a4.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/a5.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/a6.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/a7.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/bp1.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/bp2.jpeg", "label": "no-manzana" },
-     { "image": "/images/ova/g1.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/g2.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/g3.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/g4.jpeg", "label": "no-manzana" },
-    { "image": "/images/ova/g5.jpeg", "label": "no-manzana" },
-  { "image": "/images/ova/m4.jpeg", "label": "manzana" },
-    { "image": "/images/ova/m5.jpeg", "label": "manzana" },
-    { "image": "/images/ova/m6.jpeg", "label": "manzana" }
-
-
-
-
-   
+    { "image": "/images/ova/bp4.png", "label": "no-manzana" },
+    { "image": "/images/ova/m8.jpeg", "label": "manzana" }
   ],
   "target": "manzana"
 }

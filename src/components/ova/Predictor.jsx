@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Predictor({ items }) {
+// Ahora recibimos target como prop
+export default function Predictor({ items, target = 'manzana' }) {
   const [visibleItems, setVisibleItems] = useState([]);
   const [predictions, setPredictions] = useState([]);
   const [showResults, setShowResults] = useState(false);
@@ -23,7 +24,8 @@ export default function Predictor({ items }) {
       const newPredictions = [];
 
       for (const current of extendedItems) {
-        const prediction = current.userLabel ? 'manzana' : 'no-manzana';
+        // Usamos target dinámico
+        const prediction = current.userLabel ? target : `no-${target}`;
 
         setVisibleItems(prev =>
           prev.map(img =>
@@ -39,7 +41,7 @@ export default function Predictor({ items }) {
 
         newPredictions.push({
           image: current.image,
-          userLabel: current.userLabel ? 'manzana' : 'no-manzana',
+          userLabel: current.userLabel ? target : `no-${target}`,
           predictedLabel: prediction,
           realLabel: current.label
         });
@@ -63,7 +65,7 @@ export default function Predictor({ items }) {
     };
 
     classifySequentially();
-  }, [items]);
+  }, [items, target]);
 
   const finished = visibleItems.length === 0;
 
@@ -103,7 +105,7 @@ export default function Predictor({ items }) {
                       />
                     </td>
                     <td className="p-2 border">
-                      {item.userLabel === 'manzana' ? (
+                      {item.userLabel === target ? (
                         <span className="text-green-600 font-semibold">
                           Sí ✅
                         </span>
@@ -112,7 +114,7 @@ export default function Predictor({ items }) {
                       )}
                     </td>
                     <td className="p-2 border">
-                      {item.predictedLabel === 'manzana' ? (
+                      {item.predictedLabel === target ? (
                         <span className="text-green-600 font-semibold">
                           Sí ✅
                         </span>
@@ -121,7 +123,7 @@ export default function Predictor({ items }) {
                       )}
                     </td>
                     <td className="p-2 border">
-                      {item.realLabel === 'manzana' ? (
+                      {item.realLabel === target ? (
                         <span className="inline-block px-2 py-1 text-green-700 bg-green-100 rounded-full text-xs font-medium">
                           Sí
                         </span>
@@ -216,7 +218,7 @@ export default function Predictor({ items }) {
               />
               {item.predicted && (
                 <div className="absolute bottom-1 text-sm font-semibold text-gray-800 bg-white/80 px-2 py-0.5 rounded">
-                  {item.userLabel ? 'Sí ✅' : 'No ❌'}
+                  {item.userLabel ? `Sí ✅` : `No ❌`}
                 </div>
               )}
             </motion.div>

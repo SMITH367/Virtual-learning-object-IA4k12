@@ -42,22 +42,19 @@ export default function OVAWrapper({ items, target }) {
       {step === 1 && (
         <>
           {!showResults ? (
-<StepNarrator step={showResults ? "Resultados" : "🧠 Ahora veamos cómo clasifica la IA"} />
-
-
+            <StepNarrator step={showResults ? "Resultados" : `🧠 Ahora veamos cómo clasifica la IA sobre "${target}"`} />
           ) : (
             <h2 className="text-2xl font-bold text-center text-purple-700">
               Resultados
             </h2>
           )}
 
-       <Predictor
-          items={labeledItems}
-          target={target}
-          onFinish={handlePredictionFinish}
-          showResults={showResults}
-      />
-
+          <Predictor
+            items={labeledItems}
+            target={target}
+            onFinish={handlePredictionFinish}
+            showResults={showResults}
+          />
 
           {predictedItems.length === labeledItems.length && !showResults && (
             <div className="text-center mt-6">
@@ -93,9 +90,9 @@ export default function OVAWrapper({ items, target }) {
                           className="w-16 h-16 object-contain mx-auto"
                         />
                       </td>
-                      <td className="p-2 border">{item.realLabel === 'manzana' ? '✅' : '❌'}</td>
-                      <td className="p-2 border">{item.userLabel === 'manzana' ? '✅' : '❌'}</td>
-                      <td className="p-2 border">{item.predictedLabel === 'manzana' ? '✅' : '❌'}</td>
+                      <td className="p-2 border">{item.realLabel === target ? '✅' : '❌'}</td>
+                      <td className="p-2 border">{item.userLabel === target ? '✅' : '❌'}</td>
+                      <td className="p-2 border">{item.predictedLabel === target ? '✅' : '❌'}</td>
                     </tr>
                   ))}
                 </tbody>

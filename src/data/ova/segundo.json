@@ -1,0 +1,20 @@
+{
+  "items": [
+    { "image": "/images/ova/bp1.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/a5.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/g1.jpeg", "label": "gato" },
+    { "image": "/images/ova/m4.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/m2.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/a6.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/bp2.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/g2.jpeg", "label": "gato" },
+    { "image": "/images/ova/g3.jpeg", "label": "gato" },
+    { "image": "/images/ova/a7.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/g4.jpeg", "label": "gato" },
+    { "image": "/images/ova/m5.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/g6.jpeg", "label": "gato" },
+    { "image": "/images/ova/bp3.jpeg", "label": "no-gato" },
+    { "image": "/images/ova/g7.jpeg", "label": "gato" }
+  ],
+  "target": "gato"
+}
