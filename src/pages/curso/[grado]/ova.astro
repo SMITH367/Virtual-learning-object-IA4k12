@@ -1,28 +1,16 @@
 ---
-import fs from 'fs/promises';
-import path from 'path';
+import { ovaDatasets } from "../../../data/ovaDatasets.js";
 import OVAWrapper from '../../../components/ova/OVAWrapper.jsx';
 
+// Esta función le dice a Astro qué rutas dinámicas generar
 export async function getStaticPaths() {
-  const dataDir = path.resolve('./src/data/ova');
-  const files = await fs.readdir(dataDir);
-
-  return files.map((file) => ({
-    params: { grado: file.replace('.json', '') },
+  return ovaDatasets.map(dataset => ({
+    params: { grado: dataset.course }
   }));
 }
 
 const { grado } = Astro.params;
-const filePath = path.resolve('./src/data/ova', `${grado}.json`);
-
-let data = { items: [], target: 'objeto' };
-
-try {
-  const file = await fs.readFile(filePath, 'utf-8');
-  data = JSON.parse(file);
-} catch (err) {
-  console.error('Error cargando JSON:', err);
-}
+const dataset = ovaDatasets.find(ds => ds.course === grado) || { items: [], target: "objeto" };
 ---
 
 <html lang="es">
@@ -32,7 +20,6 @@ try {
   </head>
   <body class="p-4 font-sans bg-white min-h-screen">
     <h1 class="text-2xl font-bold mb-4">Curso- {grado}</h1>
-    <OVAWrapper client:load items={data.items} target={data.target} />
-
+    <OVAWrapper client:load items={dataset.items} target={dataset.target} />
   </body>
 </html>
