@@ -1,28 +1,27 @@
 ---
-import "../styles/tailwind.css";
 import { trivias } from "../data/trivia.js";
+import "../styles/tailwind.css";
+
+const cursos = trivias.map((t) => t.course); // O usa un array fijo si quieres mostrar todos aunque no tengan trivia
 ---
+
 <html lang="es">
   <head>
-    <title>Cursos</title>
+    <title>Cursos Disponibles</title>
   </head>
-  <body class="min-h-screen bg-gradient-to-b from-indigo-100 to-white pt-16 sm:pt-10 p-10 bg">
-    <div class="container mx-auto px-4 pt-24 sm:pt-10">
-      <h1 class="text-3xl sm:text-4xl font-bold text-center mb-30 sm:mb-20 text-indigo-700 animate-bounce">
-        Cursos Disponibles
-      </h1>
-
-      <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
-        {trivias.map(({ course }, index) => (
-          <a
-            href={`/curso/${course}/trivia`}
-            class={`w-44 text-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 fade-in-up`}
-            style={`animation-delay: ${index * 0.2}s`}
-          >
-            Ir al Curso {course.charAt(0).toUpperCase() + course.slice(1)}
-          </a>
-        ))}
-      </div>
+  <body class="p-10 bg-gray-50">
+    <h1 class="text-3xl font-bold text-indigo-800 mb-6 text-center">
+      Cursos Disponibles
+    </h1>
+    <div class="flex flex-wrap gap-6 justify-center">
+      {cursos.map((curso) => (
+        <a
+          href={`/curso/${curso}`}
+          class="bg-indigo-600 text-white px-8 py-6 rounded-xl shadow text-lg font-semibold text-center hover:bg-indigo-700 transition w-60"
+        >
+          Ir al Curso {curso.charAt(0).toUpperCase() + curso.slice(1)}
+        </a>
+      ))}
     </div>
   </body>
 </html>

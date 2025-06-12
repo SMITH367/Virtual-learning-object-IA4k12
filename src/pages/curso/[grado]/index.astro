@@ -1,0 +1,50 @@
+---
+import { trivias } from "../../../data/trivia.js";
+import { ovaDatasets } from "../../../data/ovaDatasets.js";
+import "../../../styles/tailwind.css";
+
+// Esta función le dice a Astro qué rutas dinámicas generar
+export async function getStaticPaths() {
+  // Unifica todos los cursos disponibles en trivia y ovaDatasets
+  const cursosTrivia = trivias.map(t => t.course);
+  const cursosOva = ovaDatasets.map(ds => ds.course);
+  // Elimina duplicados
+  const cursos = Array.from(new Set([...cursosTrivia, ...cursosOva]));
+  return cursos.map(curso => ({
+    params: { grado: curso }
+  }));
+}
+
+const { grado } = Astro.params;
+const hasTrivia = trivias.some(t => t.course === grado);
+const hasOva = ovaDatasets.some(ds => ds.course === grado);
+---
+
+<html lang="es">
+  <head>
+    <title>Curso {grado.charAt(0).toUpperCase() + grado.slice(1)}</title>
+  </head>
+  <body class="p-10 bg-gray-50">
+    <h1 class="text-3xl font-bold text-indigo-800 mb-8 text-center">
+      Curso {grado.charAt(0).toUpperCase() + grado.slice(1)}
+    </h1>
+    <div class="flex flex-col items-center gap-6">
+      {hasOva && (
+        <a
+          href={`/curso/${grado}/ova`}
+          class="bg-blue-600 text-white px-8 py-4 rounded-xl shadow text-lg font-semibold hover:bg-blue-700 transition w-60 text-center"
+        >
+          Ir al OVA
+        </a>
+      )}
+      {hasTrivia && (
+        <a
+          href={`/curso/${grado}/trivia`}
+          class="bg-green-600 text-white px-8 py-4 rounded-xl shadow text-lg font-semibold hover:bg-green-700 transition w-60 text-center"
+        >
+          Ir a la Trivia
+        </a>
+      )}
+    </div>
+  </body>
+</html>
