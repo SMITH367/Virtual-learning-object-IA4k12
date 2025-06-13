@@ -13,11 +13,11 @@ export default function Predictor({ items, target = 'manzana', showResults, onFi
     if (showResults && predictions.length > 0) {
       const correct = predictions.filter(p => p.userLabel === p.realLabel).length;
       if (correct / predictions.length >= 0.6) {
-        setEmojiList(["🎉", "✨", "🏆", "🥳", "👏"]); 
+        setEmojiList(["🎉", "✨", "🏆", "🥳", "👏"]); // emojis felices
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 3000);
       } else {
-        setEmojiList(["😢", "😞", "😔", "😟", "😕"]); 
+        setEmojiList(["😢", "😞", "😔", "😟", "😕"]); // emojis tristes
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 3000);
       }
@@ -25,7 +25,7 @@ export default function Predictor({ items, target = 'manzana', showResults, onFi
   }, [showResults, predictions]);
 
   useEffect(() => {
-    
+    // Si estamos mostrando resultados y recibimos predicciones por props, usarlas directamente
     if (showResults && predictionsProp) {
       setPredictions(predictionsProp);
       setFinished(true);
@@ -251,7 +251,7 @@ export default function Predictor({ items, target = 'manzana', showResults, onFi
     return (
       <div className="relative min-h-[600px] bg-gradient-to-b from-blue-100 to-blue-300 rounded-xl overflow-hidden p-4">
         <div className="absolute inset-0 bg-blue-200/30 pointer-events-none animate-pulse" />
-    
+        {/* Robot narrador y mensaje */}
         <div className="flex flex-col items-center mb-8">
           <div className="flex items-center gap-4 px-6 py-3 rounded-2xl bg-gradient-to-r from-yellow-100 via-pink-100 to-green-100 border-2 border-pink-200 shadow font-bold text-lg text-purple-700 animate-fade-in">
             {/* SVG de robot */}
@@ -275,7 +275,7 @@ export default function Predictor({ items, target = 'manzana', showResults, onFi
           <span className="mt-2 text-base bg-blue-100 rounded-xl px-4 py-1 shadow animate-fade-in">
             La IA está clasificando las imágenes una por una...<br />
             Observa cómo cada imagen desaparece cuando la IA toma su decisión.<br />
-            <span className="text-pink-600 font-bold">¿Adivinará igual que tú?</span>
+            <span className="text-pink-400 font-bold">¿Adivinará igual que tú?</span>
           </span>
         </div>
         {/* Animación de imágenes */}
@@ -285,8 +285,8 @@ export default function Predictor({ items, target = 'manzana', showResults, onFi
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: -40, scale: 0.8 }}
-                animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }} 
-                exit={{ opacity: 0, scale: 0.6, y: 40 }} 
+                animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }} // Solo animación de entrada simple
+                exit={{ opacity: 0, scale: 0.6, y: 40 }} // Animación de salida solo para la que se elimina
                 transition={{
                   duration: 0.6,
                   ease: 'easeInOut'
@@ -317,5 +317,6 @@ export default function Predictor({ items, target = 'manzana', showResults, onFi
     );
   }
 
+  // Si terminó la predicción pero aún no se muestran resultados, no muestres nada
   return null;
 }
