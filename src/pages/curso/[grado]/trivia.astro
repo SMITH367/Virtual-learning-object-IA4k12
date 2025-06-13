@@ -1,0 +1,28 @@
+---
+import { trivias } from "../../../data/trivia.js";
+
+// Generar los paths dinámicos para cada curso
+export async function getStaticPaths() {
+  return trivias.map((trivia) => ({
+    params: { grado: trivia.course },
+  }));
+}
+
+import Trivia from '../../../components/games/Trivia.jsx';
+import "../../../styles/tailwind.css";
+
+const { grado } = Astro.params;
+---
+
+<html lang="es">
+  <head>
+    <title>Trivia - Curso {grado}</title>
+  </head>
+  <body class="p-10 bg-gray-100">
+    <h1 class="text-2xl font-bold mb-6 text-indigo-800">Trivia - Curso {grado}</h1>
+
+    <Trivia client:idle course={grado} />
+
+  </body>
+</html>
+

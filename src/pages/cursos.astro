@@ -1,0 +1,28 @@
+---
+import { trivias } from "../data/trivia.js";
+import "../styles/tailwind.css";
+
+const cursos = trivias.map((t) => t.course); // O usa un array fijo si quieres mostrar todos aunque no tengan trivia
+---
+
+<html lang="es">
+  <head>
+    <title>Cursos Disponibles</title>
+  </head>
+  <body class="p-10 bg-gray-50">
+    <h1 class="text-3xl font-bold text-indigo-800 mb-6 text-center">
+      Cursos Disponibles
+    </h1>
+    <div class="flex flex-wrap gap-6 justify-center">
+      {cursos.map((curso) => (
+        <a
+          href={`/curso/${curso}`}
+          class="bg-indigo-600 text-white px-8 py-6 rounded-xl shadow text-lg font-semibold text-center hover:bg-indigo-700 transition w-60"
+        >
+          Ir al Curso {curso.charAt(0).toUpperCase() + curso.slice(1)}
+        </a>
+      ))}
+    </div>
+  </body>
+</html>
+
