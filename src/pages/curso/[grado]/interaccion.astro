@@ -1,0 +1,27 @@
+---
+// filepath: src/pages/curso/[grado]/interaccion.astro
+import HablemosRobot from "../../../components/interaccion/HablemosRobot.jsx";
+import nivelesPorGrado from "../../../data/nivelesPorGrado.js";
+import "../../../styles/tailwind.css";
+
+export async function getStaticPaths() {
+  // Obtiene todos los grados definidos en tu objeto de datos
+  const grados = Object.keys(nivelesPorGrado);
+  return grados.map(grado => ({
+    params: { grado }
+  }));
+}
+
+const { grado } = Astro.params;
+const data = nivelesPorGrado[grado] || nivelesPorGrado["primero"];
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>¡Hablemos, Robot!</title>
+  </head>
+  <body>
+    <HablemosRobot client:load niveles={data.niveles} portada={data.portada} grado={grado} />
+    <!-- ...resto del contenido... -->
+  </body>
+</html>

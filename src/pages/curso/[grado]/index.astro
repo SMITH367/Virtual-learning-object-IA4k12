@@ -1,6 +1,7 @@
 ---
 import { trivias } from "../../../data/trivia.js";
 import { ovaDatasets } from "../../../data/ovaDatasets.js";
+import nivelesPorGrado from "../../../data/nivelesPorGrado.js";
 import "../../../styles/tailwind.css";
 
 // Esta función le dice a Astro qué rutas dinámicas generar
@@ -18,6 +19,7 @@ export async function getStaticPaths() {
 const { grado } = Astro.params;
 const hasTrivia = trivias.some(t => t.course === grado);
 const hasOva = ovaDatasets.some(ds => ds.course === grado);
+const tieneJuegoInteraccion = Boolean(nivelesPorGrado[grado]);
 ---
 
 <html lang="es">
@@ -45,6 +47,21 @@ const hasOva = ovaDatasets.some(ds => ds.course === grado);
           Ir a la Trivia
         </a>
       )}
+      {tieneJuegoInteraccion && (
+        <a
+          href={`/curso/${grado}/interaccion`}
+          class="bg-purple-600 text-white px-8 py-4 rounded-xl shadow text-lg font-semibold hover:bg-purple-700 transition w-60 text-center"
+        >
+          Ir al Juego<br />
+          Hablemos, Robot!
+        </a>
+      )}
+      <a
+        href="/cursos"
+        class="bg-white px-6 py-3 rounded-lg shadow text-lg font-medium block w-max mx-auto mt-6"
+      >
+        Volver a Cursos
+      </a>
     </div>
   </body>
 </html>
