@@ -1,14 +1,352 @@
 ---
-import Layout from '../layouts/MainLayout.astro';
+import Header from '../components/layout/Navbar.astro';
+// src/pages/home.astro
+// Variables para el contenido, centralizadas para fácil edición y personalización
+const pageTitle = "Mentes Futuras IA - Impulsando el Aprendizaje de IA en K12";
+const heroTitle = "Mentes Futuras IA: Formando la Próxima Generación de Innovadores Tecnológicos";
+const heroSubtitle = "Nuestro Objeto Virtual de Aprendizaje (OVA) interactivo y alineado con la iniciativa IA4K12, diseñado para introducir la Inteligencia Artificial a estudiantes de educación básica y media.";
+const heroImageAlt = "Ilustración de estudiantes y profesores interactuando con elementos de inteligencia artificial en un aula moderna.";
 
-import "../styles/tailwind.css";
+const aboutContent = `
+  **Mentes Futuras IA** es un proyecto innovador que surge de la visión de la iniciativa **IA4K12**, buscando democratizar el acceso al conocimiento de la inteligencia artificial desde temprana edad. Nuestro **Objeto Virtual de Aprendizaje (OVA)** ha sido meticulosamente diseñado para desmitificar la IA, transformando conceptos complejos en experiencias de aprendizaje accesibles, interactivas y profundamente atractivas. Nos comprometemos a equipar a estudiantes y educadores con una comprensión fundamental de la IA, preparándolos para navegar y construir el futuro tecnológico con confianza y responsabilidad. Creemos firmemente que una base sólida en IA es crucial para el desarrollo de pensamiento crítico y habilidades de resolución de problemas en la era digital.
+`;
+
+const methodologyContent = `
+  La pedagogía de **Mentes Futuras IA** se cimienta en una **metodología activa y exploratoria**, inspirada en los principios de aprendizaje basado en proyectos y el constructivismo. Nuestro OVA promueve un ciclo de aprendizaje dinámico que incluye:
+  <ul class="list-disc list-inside ml-4 mt-2">
+    <li>**Exploración Guiada:** Introducción a los conceptos clave de IA mediante narrativas envolventes y ejemplos de la vida real.</li>
+    <li>**Experimentación Práctica:** Actividades "manos a la obra", simulaciones interactivas y pequeños desafíos de codificación (visual y/o basada en bloques) que permiten aplicar la teoría.</li>
+    <li>**Proyectos Colaborativos:** Desarrollo de mini-proyectos de IA que fomentan el trabajo en equipo, la creatividad y la resolución de problemas complejos.</li>
+    <li>**Reflexión y Debate:** Espacios para discutir las implicaciones éticas y sociales de la IA, fomentando una ciudadanía digital consciente.</li>
+  </ul>
+  Este enfoque asegura que el aprendizaje sea no solo informativo, sino también transformador, capacitando a los estudiantes para ser creadores y pensadores críticos.
+`;
+
+const advantagesList = [
+  {
+    icon: "fas fa-robot",
+    title: "Acceso Intuitivo a la IA",
+    description: "Desmitifica conceptos complejos de IA a través de un lenguaje claro y herramientas fáciles de usar, sin requerir experiencia previa."
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "Fomento de la Creatividad",
+    description: "Estimula la innovación y el pensamiento lateral mediante desafíos abiertos y proyectos que invitan a la creación de soluciones originales."
+  },
+  {
+    icon: "fas fa-chart-line",
+    title: "Desarrollo de Habilidades del Siglo XXI",
+    description: "Potencia el pensamiento computacional, la lógica, la colaboración y la adaptabilidad, esenciales para el éxito futuro."
+  },
+  {
+    icon: "fas fa-hands-helping",
+    title: "Apoyo Integral al Docente",
+    description: "Ofrece guías didácticas, recursos complementarios y soporte continuo para una implementación exitosa en el aula."
+  }
+];
+
+const testimonials = [
+  {
+    quote: "La plataforma de Mentes Futuras IA es una herramienta excepcional. Mis estudiantes están más comprometidos que nunca con la tecnología y la IA, y los resultados de aprendizaje son notables.",
+    author: "Dra. Sofía Vargas",
+    role: "Coordinadora Académica, Instituto Tecnológico del Saber"
+  },
+  {
+    quote: "Aprender sobre IA con Mentes Futuras IA ha sido una experiencia fascinante. Ahora entiendo cómo funciona ChatGPT y cómo puedo usar la IA para mis proyectos escolares.",
+    author: "Valeria R., Estudiante",
+    role: "Grado 9"
+  },
+  {
+    quote: "El enfoque práctico del OVA permitió a nuestros profesores integrar la IA en el currículo de una manera fluida y efectiva. Es un recurso invaluable para la educación moderna.",
+    author: "Prof. Ricardo Méndez",
+    role: "Jefe de Departamento de Ciencias, Colegio Bicentenario"
+  }
+];
+
+const partners = [
+  { name: "Fundación InnovaTech", logo: "/images/logo-innovatech.svg" },
+  { name: "Educación Conectada Latam", logo: "/images/logo-educacionconectada.svg" },
+  { name: "TecnoFuturo Consultores", logo: "/images/logo-tecnofuturo.svg" },
+  { name: "Universidad Digital", logo: "/images/logo-unidigital.svg" }
+];
+
+const callToActionContent = `
+  En **Mentes Futuras IA**, creemos que la colaboración es la clave para escalar el impacto de la educación en inteligencia artificial. Invitamos a instituciones educativas, organizaciones gubernamentales, empresas tecnológicas y líderes educativos a unirse a nuestra misión. Juntos, podemos construir un ecosistema de aprendizaje robusto que prepare a la juventud para los desafíos y oportunidades del mañana. Si comparte nuestra visión y desea explorar alianzas estratégicas, contáctenos hoy mismo.
+`;
 ---
-<Layout>
-  <h1>Home</h1>
-  <a
-    href="/cursos/"
-    class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded-md font-semibold text-base hover:bg-blue-700 transition"
-  >
-    Ir a cursos Disponibles
-  </a>
-</Layout>
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Landing page oficial de Mentes Futuras IA. Un Objeto Virtual de Aprendizaje basado en la iniciativa IA4K12 para la enseñanza de Inteligencia Artificial en educación K12." />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujlZH0+M/p6J4+xS0lK2O5wS4x/tJ0+q1w+d/S3/0+gJ+fV+V+p+Q+A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+A+R+S+T+U+V+W+X+Y+Z" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans">
+  
+    <Header/>
+    <section id="hero" class="relative bg-gradient-to-br from-indigo-600 to-green-600 text-white py-20 md:py-32 flex items-center justify-center min-h-[70vh] text-center overflow-hidden">
+      <div class="container mx-auto px-4 max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center z-10">
+        <div class="text-left md:text-left">
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-down">
+            {heroTitle}
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in-up">
+            {heroSubtitle}
+          </p>
+          <div class="space-x-4 flex justify-start">
+            <a href="/cursos" class="bg-white text-indigo-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+              Descubre nuestros cursos
+            </a>
+            <a href="mailto:info@mentesfuturasia.org" class="border-2 border-white text-white hover:bg-white hover:text-indigo-600 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+              Contacta al Equipo
+            </a>
+          </div>
+        </div>
+        <div class="flex justify-center md:justify-end animate-fade-in-right">
+          <img
+            src="/images/hero-ai-education.svg"
+            alt={heroImageAlt}
+            class="max-w-full h-auto rounded-lg shadow-2xl transition-transform duration-500 ease-in-out hover:scale-105"
+            loading="eager"
+          />
+        </div>
+      </div>
+      <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4h-2v4H0v2h2v4h4v-2h-4v-2h4zm0 20v-4h-2v4H0v2h2v4h4v-2h-4v-2h4zM36 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 0v-4h-2v4H0v2h2v4h4v-2h-4v-2h4zM16 24V20h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM16 4V0h-2v4h-4v2h4v4h2V6h4V4h-4zM26 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM26 44v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM46 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM46 24V20h-2v4h-4v2h4v4h2v-4h4v-2h-4zM46 4v-4h-2v4h-4v2h4v4h2V6h4V4h-4zM56 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM56 44v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </section>
+
+    <main>
+      <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-7xl">
+          <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">Sobre Mentes Futuras IA: Una Visión para la Educación Digital</h2>
+          <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+              <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                <Fragment set:html={aboutContent} />
+              </p>
+              <p class="text-lg leading-relaxed text-gray-700">
+                Nuestro compromiso es con la **excelencia educativa y la equidad**, asegurando que cada estudiante tenga la oportunidad de explorar el fascinante mundo de la IA, preparándolos no solo para el mercado laboral del futuro, sino para ser ciudadanos informados y éticos en una sociedad cada vez más tecnológica.
+              </p>
+            </div>
+            <div class="flex justify-center items-center p-4 bg-indigo-50 rounded-lg shadow-md">
+              <img
+                src="/images/ai-learning.svg"
+                alt="Ilustración de conceptos de IA y aprendizaje"
+                class="w-full max-w-md rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="methodology" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4 max-w-7xl">
+          <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">Metodología Innovadora: Aprendizaje Activo de IA</h2>
+          <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="flex justify-center items-center p-4 bg-green-50 rounded-lg shadow-md">
+                <img
+                    src="/images/methodology-flow.svg"
+                    alt="Diagrama de flujo de la metodología de aprendizaje"
+                    class="w-full max-w-md rounded-lg"
+                />
+            </div>
+            <div>
+              <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                <Fragment set:html={methodologyContent} />
+              </p>
+              <p class="text-lg leading-relaxed text-gray-700">
+                Esta aproximación centrada en el estudiante garantiza un **aprendizaje significativo y transferible**, equipando a los jóvenes con las herramientas cognitivas y prácticas necesarias para prosperar en un mundo transformado por la IA.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="advantages" class="py-16 md:py-24 bg-indigo-50">
+        <div class="container mx-auto px-4 max-w-7xl">
+          <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">Impacto y Beneficios Transformadores del OVA</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {advantagesList.map((advantage) => (
+              <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
+                <div class="text-green-600 mb-4 text-5xl">
+                  <i class={advantage.icon}></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                  {advantage.title}
+                </h3>
+                <p class="text-gray-600">
+                  {advantage.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-7xl">
+          <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">Voces de Nuestra Comunidad: Experiencias con Mentes Futuras IA</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {testimonials.map((testimonial) => (
+              <blockquote class="bg-indigo-100 p-8 rounded-lg shadow-md border-l-4 border-indigo-600 flex flex-col justify-between h-full">
+                <p class="text-xl italic text-gray-800 mb-6 flex-grow">
+                  "{testimonial.quote}"
+                </p>
+                <div>
+                  <cite class="block text-right font-semibold text-indigo-800">
+                    - {testimonial.author}
+                  </cite>
+                  <cite class="block text-right text-gray-600 text-sm">
+                    {testimonial.role}
+                  </cite>
+                </div>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="partners" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4 max-w-7xl">
+          <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">Aliados Estratégicos: Construyendo el Futuro Juntos</h2>
+          <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+            {partners.map((partner) => (
+              <div class="flex flex-col items-center">
+                <img src={partner.logo} alt={`Logo de ${partner.name}`} class="h-24 grayscale hover:grayscale-0 transition-all duration-300"/>
+                <p class="mt-4 text-gray-700 font-medium text-lg">{partner.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-16 md:py-24 bg-green-600 text-white">
+        <div class="container mx-auto px-4 max-w-5xl text-center">
+          <h2 class="text-4xl font-bold mb-8">Únete a Mentes Futuras IA: Transforma la Educación con Nosotros</h2>
+          <p class="text-xl leading-relaxed opacity-90 mb-10">
+            <Fragment set:html={callToActionContent} />
+          </p>
+          <a href="mailto:info@mentesfuturasia.org" class="inline-block bg-white text-green-700 hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 text-lg">
+            Explora Oportunidades de Colaboración
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4 max-w-7xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div>
+            <h4 class="text-xl font-bold mb-4">Mentes Futuras IA</h4>
+            <p class="text-gray-400 text-sm">Fomentando la inteligencia artificial y el pensamiento crítico en la juventud.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-4">Navegación</h4>
+            <ul>
+              <li class="mb-2"><a href="#hero" class="text-gray-400 hover:text-white transition-colors duration-200">Inicio</a></li>
+              <li class="mb-2"><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-200">Sobre el Proyecto</a></li>
+              <li class="mb-2"><a href="#methodology" class="text-gray-400 hover:text-white transition-colors duration-200">Metodología</a></li>
+              <li class="mb-2"><a href="#advantages" class="text-gray-400 hover:text-white transition-colors duration-200">Beneficios</a></li>
+              <li class="mb-2"><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors duration-200">Testimonios</a></li>
+              <li class="mb-2"><a href="#partners" class="text-gray-400 hover:text-white transition-colors duration-200">Aliados</a></li>
+              <li class="mb-2"><a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-200">Contacto</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-4">Recursos</h4>
+            <ul>
+              <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Preguntas Frecuentes</a></li>
+              <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Términos y Condiciones</a></li>
+              <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Política de Privacidad</a></li>
+              <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Blog / Noticias</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-4">Conéctate con Nosotros</h4>
+            <p class="text-gray-400 mb-2">Email: <a href="mailto:info@mentesfuturasia.org" class="hover:text-white">info@mentesfuturasia.org</a></p>
+            <address class="text-gray-400 not-italic mb-4">
+              Av. del Conocimiento # 12-34<br>
+              Bogotá D.C., Colombia
+            </address>
+            <div class="flex justify-start space-x-4 mt-2">
+              <a href="#" class="text-gray-400 hover:text-white text-2xl transition-colors duration-200"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white text-2xl transition-colors duration-200"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white text-2xl transition-colors duration-200"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white text-2xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white text-2xl transition-colors duration-200"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
+          <p>&copy; {new Date().getFullYear()} Mentes Futuras IA. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Animaciones */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-in-down {
+    animation: fadeInDown 1s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards 0.3s; /* Ligero retraso */
+  }
+
+  .animate-fade-in-right {
+    animation: fadeInRight 1s ease-out forwards 0.6s; /* Retraso para la imagen */
+  }
+
+  /* Estilos específicos para la sección de Partners y sus logos */
+  #partners img {
+    max-height: 96px; /* Limita la altura de los logos */
+    width: auto; /* Mantiene la proporción */
+  }
+</style>
