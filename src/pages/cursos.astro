@@ -1,6 +1,7 @@
 ---
 import { trivias } from "../data/trivia.js";
 import "../styles/tailwind.css";
+import Header from "../components/layout/Navbar.astro";
 
 const cursos = trivias.map((t) => t.course); // O usa un array fijo si quieres mostrar todos aunque no tengan trivia
 ---
@@ -8,8 +9,10 @@ const cursos = trivias.map((t) => t.course); // O usa un array fijo si quieres m
 <html lang="es">
   <head>
     <title>Cursos Disponibles</title>
+    <meta charset="UTF-8" />
   </head>
-  <body class="p-10 bg-gray-50">
+  <body class="bg-gray-50">
+    <Header />
     <h1 class="text-3xl font-bold text-indigo-800 mb-6 text-center">
       Cursos Disponibles
     </h1>
