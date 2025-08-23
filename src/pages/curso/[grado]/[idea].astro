@@ -1,0 +1,197 @@
+---
+import { ai4k12IdeasData } from "../../../data/ia4k12Ideas";
+import Header from '../../../components/layout/Navbar.astro';
+import "../../../styles/tailwind.css";
+
+// Esta función le dice a Astro qué rutas dinámicas generar
+export async function getStaticPaths() {
+  const paths = [];
+  ai4k12IdeasData.forEach(courseData => {
+    courseData.ideas.forEach(idea => {
+      paths.push({
+        params: {
+          grado: courseData.course,
+          idea: idea.id,
+        },
+      });
+    });
+  });
+  return paths;
+}
+
+const { grado, idea } = Astro.params;
+
+// Encontrar los datos de la idea actual para el grado específico
+const currentCourseData = ai4k12IdeasData.find(c => c.course === grado);
+const currentIdeaData = currentCourseData?.ideas.find(i => i.id === idea);
+
+// Si no se encuentra la idea o el grado, redirige a una página 404
+if (!currentIdeaData) {
+  return Astro.redirect('/404');
+}
+
+const allIdeasForCourse = currentCourseData?.ideas || [];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{currentIdeaData.title} - Curso {grado.charAt(0).toUpperCase() + grado.slice(1)}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-gradient-to-br from-indigo-50 to-purple-100 min-h-screen font-sans text-gray-800">
+  <Header/>
+    <div class="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-10 lg:p-12 my-8">
+    
+      <header class="text-center mb-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-indigo-800 leading-tight mb-4">
+          Curso {grado.charAt(0).toUpperCase() + grado.slice(1)}: <span class="text-indigo-600">{currentIdeaData.title}</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          {currentIdeaData.guidingText}
+        </p>
+      </header>
+
+      {/* Main Multimedia Section */}
+      <div class="mb-12 p-4 md:p-6 bg-indigo-50 rounded-2xl shadow-inner border border-indigo-200">
+        {currentIdeaData.multimedia.type === 'image' && (
+          <img
+            src={currentIdeaData.multimedia.src}
+            alt={currentIdeaData.multimedia.alt}
+            class="w-full h-auto rounded-xl shadow-lg border border-gray-200 object-cover"
+          />
+        )}
+        {currentIdeaData.multimedia.type === 'video' && (
+          <div class="relative w-full overflow-hidden rounded-xl shadow-lg border border-gray-200" style="padding-top: 56.25%;">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src={currentIdeaData.multimedia.src}
+              title={currentIdeaData.multimedia.alt}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        )}
+        {currentIdeaData.multimedia.type === 'animation' && (
+          <img
+            src={currentIdeaData.multimedia.src}
+            alt={currentIdeaData.multimedia.alt}
+            class="w-full h-auto rounded-xl shadow-lg border border-gray-200 object-cover"
+          />
+        )}
+      </div>
+
+      {/* Sections with Content and Optional Multimedia */}
+      {currentIdeaData.sections && currentIdeaData.sections.length > 0 && (
+        <section class="mb-12 space-y-12">
+          {currentIdeaData.sections.map((section, index) => (
+            <div class={`p-8 rounded-2xl shadow-lg border border-gray-100 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+              <h2 class="text-3xl font-bold text-indigo-700 mb-5 border-b-2 border-indigo-200 pb-2">
+                {section.heading}
+              </h2>
+              <div class={`grid gap-8 ${section.multimedia ? 'md:grid-cols-2 items-center' : ''}`}>
+                <div class={section.multimedia && index % 2 !== 0 ? 'md:order-2' : ''}> {/* Alternate order for visual flow */}
+                  <p class="text-lg text-gray-700 leading-relaxed mb-6 whitespace-pre-line">
+                    {section.content}
+                  </p>
+                </div>
+                {section.multimedia && (
+                  <div class="mt-6 md:mt-0">
+                    {section.multimedia.type === 'image' && (
+                      <img
+                        src={section.multimedia.src}
+                        alt={section.multimedia.alt}
+                        class="max-w-full h-auto rounded-lg shadow-md mx-auto"
+                      />
+                    )}
+                    {section.multimedia.type === 'video' && (
+                      <div class="relative w-full overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+                        <iframe
+                          class="absolute top-0 left-0 w-full h-full"
+                          src={section.multimedia.src}
+                          title={section.multimedia.alt}
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                        ></iframe>
+                      </div>
+                    )}
+                    {section.multimedia.type === 'animation' && (
+                      <img
+                        src={section.multimedia.src}
+                        alt={section.multimedia.alt}
+                        class="max-w-full h-auto rounded-lg shadow-md mx-auto"
+                      />
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+
+      {/* Challenge Section - Using bg-green-600 for emphasis */}
+      {currentIdeaData.challenge && (
+        <section class="bg-green-600 text-white p-8 rounded-2xl shadow-lg mb-12 text-center transform hover:scale-102 transition duration-300">
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+            🚀 {currentIdeaData.challenge.title} 🚀
+          </h2>
+          <p class="text-lg md:text-xl leading-relaxed mb-4">
+            {currentIdeaData.challenge.description}
+          </p>
+          {currentIdeaData.challenge.example && (
+            <p class="italic text-green-100 text-md md:text-lg">
+              **Ejemplo:** {currentIdeaData.challenge.example}
+            </p>
+          )}
+        </section>
+      )}
+
+       {/* "Ver actividad" button - NEW SECTION */}
+      {(
+        <section class="mb-12 text-center">
+          <a
+            href={`${currentIdeaData.relatedLinks}`} 
+            class="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-bold rounded-xl shadow-lg
+                   hover:bg-indigo-700 transition transform hover:scale-105 duration-300 ease-in-out text-xl"
+          >
+            Ver actividad
+          </a>
+        </section>
+      )}
+
+      {/* Navigation Buttons for Other Ideas */}
+      <h2 class="text-2xl md:text-3xl font-bold text-indigo-800 mb-6 text-center">
+        Explora otras Ideas de IA4K12
+      </h2>
+      <nav class="flex flex-wrap justify-center gap-4 mb-8">
+        {allIdeasForCourse.map(ideaItem => (
+          <a
+            href={`/curso/${grado}/${ideaItem.id}`}
+            class={`px-6 py-3 rounded-full shadow-md text-white font-semibold transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2
+              ${ideaItem.id === idea ? 'bg-indigo-700 shadow-xl ring-indigo-500' : 'bg-indigo-500 hover:bg-indigo-600 focus:ring-indigo-400'}`}
+          >
+            {ideaItem.title}
+          </a>
+        ))}
+      </nav>
+
+      {/* Back to Courses Button */}
+      <div class="text-center mt-12">
+        <a
+          href="/cursos"
+          class="inline-flex items-center px-8 py-4 rounded-xl shadow-lg text-lg font-medium
+                         bg-white text-gray-800 hover:bg-gray-100 transition-colors
+                         border border-gray-300 hover:border-gray-400"
+        >
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>
+          Volver a la Página de Cursos
+        </a>
+      </div>
+
+    </div>
+  </body>
+</html>

@@ -1,7 +1,9 @@
 ---
+import { ai4k12IdeasData } from "../../../data/ia4k12Ideas";
 import { trivias } from "../../../data/trivia.js";
 import { ovaDatasets } from "../../../data/ovaDatasets.js";
 import nivelesPorGrado from "../../../data/nivelesPorGrado.js";
+import Header from '../../../components/layout/Navbar.astro';
 import "../../../styles/tailwind.css";
 
 // Esta función le dice a Astro qué rutas dinámicas generar
@@ -9,8 +11,9 @@ export async function getStaticPaths() {
   // Unifica todos los cursos disponibles en trivia y ovaDatasets
   const cursosTrivia = trivias.map(t => t.course);
   const cursosOva = ovaDatasets.map(ds => ds.course);
+  const cursosIdeas = ai4k12IdeasData.map(c => c.course); // Agrega los cursos de ideas
   // Elimina duplicados
-  const cursos = Array.from(new Set([...cursosTrivia, ...cursosOva]));
+  const cursos = Array.from(new Set([...cursosTrivia, ...cursosOva, ...cursosIdeas]));
   return cursos.map(curso => ({
     params: { grado: curso }
   }));
@@ -20,48 +23,94 @@ const { grado } = Astro.params;
 const hasTrivia = trivias.some(t => t.course === grado);
 const hasOva = ovaDatasets.some(ds => ds.course === grado);
 const tieneJuegoInteraccion = Boolean(nivelesPorGrado[grado]);
+
+// Obtener las ideas específicas para el grado actual
+const currentCourseIdeas = ai4k12IdeasData.find(c => c.course === grado)?.ideas || [];
+// Obtener las ideas específicas para el grado actual
+const currentCourseData = ai4k12IdeasData.find(c => c.course === grado);
+
+
+// --- Mapeo de Emojis y Colores por Idea (Definido aquí mismo) ---
+// Puedes personalizar estos emojis y colores según el ID de la idea o su posición
+const ideaStyles = {
+ 
+  "percepcion": { emoji: "📟", bgColor: "bg-indigo-600", hoverBg: "hover:bg-indigo-700" },
+  "aprendizaje": { emoji: "🧠", bgColor: "bg-green-600", hoverBg: "hover:bg-green-700" },
+  "representacion-y-razonamiento": { emoji: "📚", bgColor: "bg-purple-600", hoverBg: "hover:bg-purple-700" },
+  "interaccion-natural": { emoji: "🤝", bgColor: "bg-yellow-600", hoverBg: "hover:bg-yellow-700" },
+  "impacto-social": { emoji: "🌍", bgColor: "bg-red-600", hoverBg: "hover:bg-red-700" },
+};
+
+// Función para obtener el estilo de una idea (con un fallback si no se encuentra)
+const getIdeaStyle = (id) => {
+  return ideaStyles[id] || { emoji: "✨", bgColor: "bg-gray-600", hoverBg: "hover:bg-gray-700" };
+};
 ---
 
 <html lang="es">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso {grado.charAt(0).toUpperCase() + grado.slice(1)}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="p-10 bg-gray-50">
-    <h1 class="text-3xl font-bold text-indigo-800 mb-8 text-center">
-      Curso {grado.charAt(0).toUpperCase() + grado.slice(1)}
-    </h1>
-    <div class="flex flex-col items-center gap-6">
-      {hasOva && (
-        <a
-          href={`/curso/${grado}/ova`}
-          class="bg-blue-600 text-white px-8 py-4 rounded-xl shadow text-lg font-semibold hover:bg-blue-700 transition w-60 text-center"
-        >
-          Ir al OVA
-        </a>
+  <body>
+    <Header/>
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-10 lg:p-12 my-2">
+
+      <header class="text-center mb-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-indigo-800 leading-tight mb-4">
+           <span class="text-indigo-600"> Curso {grado.charAt(0).toUpperCase() + grado.slice(1)}</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          ¡Bienvenido al curso de {grado.charAt(0).toUpperCase() + grado.slice(1)}! Aquí puedes explorar diferentes conceptos de Inteligencia Artificial.
+        </p>
+      </header>
+
+      
+ {/* Sección de Ideas del Curso - Con Emojis y Colores Locales */}
+      {currentCourseIdeas.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-indigo-800 mb-6 text-center border-b-2 border-indigo-200 pb-2">
+            💡 Explora las Ideas Clave de IA 🧠
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {currentCourseIdeas.map(idea => {
+              const style = getIdeaStyle(idea.id); // Obtener el estilo dinámicamente
+              return (
+                <a
+                  href={`/curso/${grado}/${idea.id}`}
+                  class={`flex flex-col items-center justify-center p-6 text-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300 ease-in-out text-center border-b-4 border-gray-100
+                  ${style.bgColor} ${style.hoverBg}`}
+                >
+                  <span class="text-4xl mb-3">{style.emoji}</span> {/* Emoji dinámico */}
+                  <span class="text-2xl font-bold mb-2">{idea.title}</span>
+                  <p class="text-sm text-white opacity-90 leading-relaxed">
+                    {idea.guidingText.substring(0, 90)}...
+                  </p>
+                  <span class="mt-4 text-xs font-semibold uppercase tracking-wide text-white opacity-70">
+                    ¡Aprender más!
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </section>
       )}
-      {hasTrivia && (
+
+      {/* Botón Volver a Cursos */}
+      <div class="text-center mt-12">
         <a
-          href={`/curso/${grado}/trivia`}
-          class="bg-green-600 text-white px-8 py-4 rounded-xl shadow text-lg font-semibold hover:bg-green-700 transition w-60 text-center"
+          href="/cursos"
+          class="inline-flex items-center px-8 py-4 rounded-xl shadow-lg text-lg font-medium
+                         bg-white text-gray-800 hover:bg-gray-100 transition-colors
+                         border border-gray-300 hover:border-gray-400"
         >
-          Ir a la Trivia
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>
+          Volver a la Página de Cursos
         </a>
-      )}
-      {tieneJuegoInteraccion && (
-        <a
-          href={`/curso/${grado}/interaccion`}
-          class="bg-purple-600 text-white px-8 py-4 rounded-xl shadow text-lg font-semibold hover:bg-purple-700 transition w-60 text-center"
-        >
-          Ir al Juego<br />
-          Hablemos, Robot!
-        </a>
-      )}
-      <a
-        href="/cursos"
-        class="bg-white px-6 py-3 rounded-lg shadow text-lg font-medium block w-max mx-auto mt-6"
-      >
-        Volver a Cursos
-      </a>
+      </div>
+
     </div>
   </body>
 </html>
