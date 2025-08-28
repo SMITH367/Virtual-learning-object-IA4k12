@@ -48,7 +48,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que vas a construir un robot que necesita percibir el mundo. ¿Qué 'ojos' (cámaras) o 'oídos' (micrófonos) le pondrías? ¿Para qué los usaría? Dibuja tu robot y escribe qué cosas podría percibir.",
           example: "Un robot de jardín que 'vea' las malas hierbas y 'escuche' si el agua está goteando.",
         },
-        relatedLinks: "/curso/primero/interaccion" 
+        relatedLinks: "" 
       },
       {
         id: "representacion-y-razonamiento",
@@ -93,10 +93,7 @@ export const ai4k12IdeasData = [
           description: "Piensa en cómo le darías instrucciones muy, muy claras a un robot para que haga tu sándwich favorito. Cada paso debe ser una regla simple. Recuerda que el robot no puede 'adivinar'.",
           example: "1. Tomar dos rebanadas de pan. 2. Poner mantequilla en una rebanada. 3. Poner jamón en la otra rebanada...",
         },
-        relatedLinks: [
-          { text: "Video: ¿Qué son los algoritmos para niños?", url: "https://www.youtube.com/watch?v=algoritmos_ninos" },
-          { text: "Juego de lógica para niños", url: "https://code.org/learn" },
-        ],
+        relatedLinks: "",
       },
       {
         id: "aprendizaje",
@@ -141,10 +138,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que tienes un 'robot' que solo sabe separar cosas por color. Dale una canasta de bloques de colores mezclados. Tu tarea es 'entrenarlo' mostrándole un bloque rojo y diciéndole 'Esto es rojo', luego un azul y 'Esto es azul'. ¿Cómo 'aprendería' a separarlos sin que le digas una regla explícita?",
           example: "Puedes poner un ojo vendado al 'robot' (otro niño) y darle ejemplos de objetos hasta que los clasifique correctamente solo por el tacto, 'aprendiendo' las texturas de cada tipo de objeto.",
         },
-        relatedLinks: [
-          { text: "Video: ¿Qué es el aprendizaje automático?", url: "https://www.youtube.com/watch?v=aprendizaje_niños" },
-          { text: "Juego: Entrena a la IA para clasificar animales", url: "https://teachablemachine.withgoogle.com/" },
-        ],
+        relatedLinks: ""
       },
       {
         id: "interaccion-natural",
@@ -189,10 +183,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que tienes un asistente de voz en el aula. ¿Qué le dirías para que te ayude a encontrar un libro, o a saber la fecha del cumpleaños de un amigo? Escribe 3 preguntas que le harías y cómo crees que te respondería.",
           example: "Pregunta: 'Asistente, ¿cuál es mi libro favorito?' Respuesta del asistente: 'Tu libro favorito es el que está en la estantería azul, el del dinosaurio grande.'",
         },
-        relatedLinks: [
-          { text: "Video: ¿Cómo hablan las computadoras?", url: "https://www.youtube.com/watch?v=como_hablan_computadoras" },
-          { text: "Juego: Habla con un personaje de IA", url: "https://www.character.ai/" },
-        ],
+        relatedLinks: ""
       },
       {
         id: "impacto-social",
@@ -237,10 +228,7 @@ export const ai4k12IdeasData = [
           description: "Dibuja un robot o un programa de IA que te gustaría que existiera para ayudar en tu escuela o en tu comunidad. ¿Qué problema resolvería? ¿Cómo crees que usaría la IA para hacerlo?",
           example: "Un robot que ayude a reciclar toda la basura de la escuela o una IA que ayude a los maestros a saber qué niños necesitan más ayuda en matemáticas.",
         },
-        relatedLinks: [
-          { text: "Artículo: La IA y el futuro para niños", url: "https://www.nationalgeographic.com/kids/article/robotics-artificial-intelligence" },
-          { text: "Cuentos sobre robots amigables", url: "https://www.ejemplo.com/cuentos-robots" },
-        ],
+        relatedLinks: ""
       },
     ],
   },
@@ -292,10 +280,7 @@ export const ai4k12IdeasData = [
           description: "Piensa en un problema simple en tu vida diaria (ej. olvidar la mochila, que se caigan las plantas). Diseña un dispositivo que use un sensor de IA para ayudarte con ese problema. Dibuja el dispositivo y explica qué sensor usaría y cómo funcionaría.",
           example: "Un 'recordatorio de mochila' que use un sensor de peso en la puerta para 'saber' si tu mochila está ahí antes de salir.",
         },
-        relatedLinks: [
-          { text: "Video: Sensores para niños", url: "https://www.youtube.com/watch?v=sensores_educativo" },
-          { text: "Juego: ¿Qué es esto? (Adivinar objetos con la IA)", url: "https://guesstheanimal.withgoogle.com/" },
-        ],
+        relatedLinks: "/curso/segundo/persepcionbasica"
       },
       {
         id: "representacion-y-razonamiento",
@@ -323,10 +308,7 @@ export const ai4k12IdeasData = [
           description: "Piensa en tu juego de mesa favorito. ¿Cuáles son las reglas principales? Escribe una secuencia de instrucciones muy claras para que un robot pueda jugar ese juego.",
           example: "Para el juego de las sillas: 'Si la música para, busca una silla. Si no hay silla, sal del juego.'",
         },
-        relatedLinks: [
-          { text: "Video: ¿Qué es un algoritmo? (para niños)", url: "https://www.youtube.com/embed/example_video_22" },
-          { text: "Juego: Programa un robot para mover objetos", url: "https://scratch.mit.edu/projects/editor/" },
-        ],
+        relatedLinks: "/curso/segundo/mateia"
       },
       {
         id: "aprendizaje",
@@ -354,10 +336,7 @@ export const ai4k12IdeasData = [
           description: "Crea un patrón de movimiento con tu cuerpo (ej. aplauso, salto, giro). Tu compañero debe intentar copiarlo. Cada vez que se equivoque, corrígele. ¿Cuántas veces tiene que repetir para 'aprender' tu patrón sin errores?",
           example: "Puedes usar tarjetas con dibujos de movimientos para que el 'robot' aprenda a seguir la secuencia.",
         },
-        relatedLinks: [
-          { text: "Video: Robots que aprenden a caminar", url: "https://www.youtube.com/embed/example_video_24" },
-          { text: "Juego: Adivina el patrón", url: "https://www.ejemplo.com/juego-patron-segundo" },
-        ],
+        relatedLinks: "/curso/segundo/aprendeia"
       },
       {
         id: "interaccion-natural",
@@ -385,10 +364,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que tienes un robot de cocina. Dibuja y escribe 3 comandos de voz que le darías para que te ayude a preparar tu postre favorito.",
           example: "Comando 1: 'Robot, mezcla los ingredientes'. Comando 2: 'Robot, pon en el horno'.",
         },
-        relatedLinks: [
-          { text: "Video: Juguetes robot que hablan", url: "https://www.youtube.com/embed/example_video_26" },
-          { text: "Juego: Controla un robot con palabras", url: "https://www.ejemplo.com/juego-robot-palabras" },
-        ],
+        relatedLinks: "curso/tercero/interaccion"
       },
       {
         id: "impacto-social",
@@ -421,10 +397,7 @@ export const ai4k12IdeasData = [
           description: "Describe un día típico en tu vida e identifica al menos 3 momentos en los que la IA podría estar ayudándote (ej. tu tablet, el tráfico, la música). Dibuja una de esas situaciones.",
           example: "Cuando pido a mi altavoz inteligente que ponga mi canción favorita por la mañana.",
         },
-        relatedLinks: [
-          { text: "Video: Cosas con IA que usamos", url: "https://www.youtube.com/embed/example_video_28" },
-          { text: "Artículo: La IA en los juegos para niños", url: "https://www.ejemplo.com/ia-juegos-ninos" },
-        ],
+        relatedLinks:"curso/segundo/trivia"
       },
     ],
   },
@@ -476,10 +449,7 @@ export const ai4k12IdeasData = [
           description: "Crea una serie de 5 dibujos simples donde 3 de ellos contengan un patrón 'secreto' (ej. 3 puntos, una línea curva) y 2 no lo tengan. Tu compañero (o un adulto) será la 'IA' y deberá 'percibir' y separar los dibujos que tienen el patrón de los que no, explicando qué patrón encontró.",
           example: "Dibujo 1: Un círculo con 3 estrellas. Dibujo 2: Un cuadrado con 3 estrellas. Dibujo 3: Un triángulo con 3 estrellas. (El patrón es '3 estrellas').",
         },
-        relatedLinks: [
-          { text: "Artículo: ¿Qué son los datos para niños?", url: "https://www.ejemplo.com/datos-para-ninos" },
-          { text: "Juego de patrones visuales para niños", url: "https://www.ejemplo.com/juego-patrones" },
-        ],
+        relatedLinks: "curso/tercero/persepcionbasica"
       },
       {
         id: "representacion-y-razonamiento",
@@ -507,10 +477,7 @@ export const ai4k12IdeasData = [
           description: "Piensa en un juego sencillo (ej. tres en raya, un juego de cartas simple). Diseña un conjunto de reglas lógicas para que una IA pudiera jugar y tomar decisiones en ese juego.",
           example: "Para tres en raya: 'SI tengo dos X seguidas, PON X en el espacio vacío para ganar.'",
         },
-        relatedLinks: [
-          { text: "Video: Lógica para niños", url: "https://www.youtube.com/embed/example_video_29" },
-          { text: "Juego de programación visual de lógica", url: "https://blockly.games/maze" },
-        ],
+        relatedLinks:"/curso/tercero/mateia"
       },
       {
         id: "aprendizaje",
@@ -538,10 +505,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que tienes un robot que debe clasificar objetos pequeños (botones, clips, monedas) en diferentes cajas. Primero, 'entrena' al robot mostrándole ejemplos de cada objeto y diciendo en qué caja va. Luego, prueba si el robot puede clasificarlos correctamente. ¿Cómo le darías retroalimentación si se equivoca?",
           example: "Puedes usar diferentes formas o colores para simplificar los objetos y las cajas.",
         },
-        relatedLinks: [
-          { text: "Video: Aprendizaje supervisado para niños", url: "https://www.youtube.com/embed/video_ejemplo_razonamiento0" },
-          { text: "Juego de clasificación de imágenes", url: "https://www.ejemplo.com/clasificacion-ia" },
-        ],
+        relatedLinks:"curso/tercero/aprendeia"
       },
       {
         id: "interaccion-natural",
@@ -574,10 +538,7 @@ export const ai4k12IdeasData = [
           description: "Imagina un robot que te ayuda en la biblioteca. Diseña un diálogo (preguntas y respuestas) entre un niño y el robot para que el niño pueda pedir un libro, preguntar por el horario o devolver un libro. Piensa en cómo el robot entendería diferentes formas de pedir lo mismo.",
           example: "Niño: 'Busco un libro de dinosaurios.' Robot: 'Claro, ¿qué dinosaurio te interesa?'",
         },
-        relatedLinks: [
-          { text: "Video: ¿Cómo hablan los robots?", url: "https://www.youtube.com/embed/video_ejemplo_razonamiento2" },
-          { text: "Juego: Crea tu propio chatbot simple", url: "https://www.ejemplo.com/crea-chatbot" },
-        ],
+        relatedLinks: "curso/tercero/interaccion"
       },
       {
         id: "impacto-social",
@@ -610,10 +571,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que eres un desarrollador de apps. Diseña una aplicación móvil que use IA para resolver un problema en tu comunidad (ej. ayudar a encontrar mascotas perdidas, alertar sobre basura en las calles, optimizar el uso de energía). Dibuja la interfaz de la app y explica cómo usaría la IA.",
           example: "Una app con IA que usa cámaras para identificar mascotas perdidas y notifica a sus dueños.",
         },
-        relatedLinks: [
-          { text: "Artículo: La IA en la agricultura", url: "https://www.ejemplo.com/ia-agricultura" },
-          { text: "Video: IA para el medio ambiente", url: "https://www.youtube.com/embed/video_ejemplo_razonamiento4" },
-        ],
+        relatedLinks: "curso/tercero/trivia"
       },
     ],
   },
@@ -665,10 +623,7 @@ export const ai4k12IdeasData = [
           description: "Reúne un grupo de frutas (manzanas, plátanos, naranjas). Eres un 'científico de datos' y tienes que 'entrenar' a tu 'IA' (un amigo o familiar) para que reconozca cada fruta. ¿Cuántos ejemplos de cada fruta necesitas mostrarle hasta que pueda reconocerlas sin fallar? ¿Qué pasa si le muestras una fruta que no ha visto antes?",
           example: "Muestra solo manzanas rojas al principio. Luego introduce una manzana verde. ¿Cómo reacciona la 'IA'?",
         },
-        relatedLinks: [
-          { text: "Video: ¿Qué es el sesgo en la IA?", url: "https://www.youtube.com/watch?v=sesgo_ia_ninos" },
-          { text: "Artículo: Datos para entrenar IA", url: "https://www.ejemplo.com/datos-entrenamiento" },
-        ],
+        relatedLinks: "curso/cuarto/persepcionbasica"
       },
       {
         id: "representacion-y-razonamiento",
@@ -696,10 +651,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que creas un servicio de streaming de películas. Diseña un sistema de IA que recomiende películas a los usuarios. ¿Qué tipo de información necesitaría la IA (datos) y qué reglas o lógica usaría para decidir qué película sugerir a cada persona? Presenta tus ideas con un diagrama.",
           example: "Si al usuario le gusta la fantasía Y las películas de acción, recomendar películas de 'acción fantástica'.",
         },
-        relatedLinks: [
-          { text: "Video: Algoritmos de búsqueda explicados", url: "https://www.youtube.com/embed/video_ejemplo_razonamiento5" },
-          { text: "Artículo: ¿Qué es la representación del conocimiento?", url: "https://www.ejemplo.com/representacion-conocimiento" },
-        ],
+        relatedLinks: "curso/cuarto/mateia"
       },
       {
         id: "aprendizaje",
@@ -732,10 +684,7 @@ export const ai4k12IdeasData = [
           description: "Recoge 20 objetos pequeños y variados (monedas, clips, lápices, gomas). Primero, clasifícalos como en 'aprendizaje supervisado' (ej. 'metales', 'plásticos') con etiquetas. Luego, clasifícalos de nuevo, pero sin etiquetas previas, como en 'aprendizaje no supervisado', encontrando tus propios grupos lógicos. ¿Encontraste patrones diferentes?",
           example: "Puedes usar colores, formas o texturas para crear tus propios grupos lógicos en el aprendizaje no supervisado.",
         },
-        relatedLinks: [
-          { text: "Video: ¿Qué es Machine Learning? (para niños)", url: "https://www.youtube.com/embed/video_ejemplo_razonamiento7" },
-          { text: "Juego: Crea tu propio modelo de ML simple", url: "https://teachablemachine.withgoogle.com/" },
-        ],
+        relatedLinks: "curso/cuarto/aprendeia"
       },
       {
         id: "interaccion-natural",
@@ -763,10 +712,7 @@ export const ai4k12IdeasData = [
           description: "Imagina un robot que te ayuda en la cocina. Diseña una interfaz para interactuar con él. ¿Preferirías hablarle, tocar una pantalla, o hacer gestos? Dibuja cómo se vería la interacción y explica por qué elegiste esa forma de comunicación.",
           example: "Puedes dibujar al robot y a una persona haciendo gestos para que el robot se mueva o prepare algo.",
         },
-        relatedLinks: [
-          { text: "Video: ¿Qué son los cobots?", url: "https://www.youtube.com/embed/video_ejemplo_razonamiento9" },
-          { text: "Artículo: Ejemplos de interfaces inteligentes", url: "https://www.ejemplo.com/interfaces-inteligentes" },
-        ],
+        relatedLinks: "curso/cuarto/interaccion"
       },
       {
         id: "impacto-social",
@@ -799,10 +745,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que eres parte de un equipo que va a crear una nueva IA. Escribe 3 reglas muy importantes que tu equipo debería seguir para asegurar que su IA sea buena y justa para todos.",
           example: "Regla 1: La IA no debe discriminar a nadie. Regla 2: La IA debe proteger la privacidad de las personas.",
         },
-        relatedLinks: [
-          { text: "Artículo: ¿Qué es la ética en la IA?", url: "https://www.ejemplo.com/etica-ia" },
-          { text: "Video: IA para los objetivos de desarrollo sostenible", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=abcdef1" },
-        ],
+        relatedLinks: "curso/cuarto/trivia"
       },
     ],
   },
@@ -854,11 +797,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que tienes que programar un asistente de voz para una nueva aplicación. ¿Qué 'palabras clave' debería 'escuchar' para activarse? ¿Qué tipos de preguntas debería poder 'entender' (percibir) y cómo respondería? Escribe un pequeño guion de una conversación entre un usuario y tu asistente, incluyendo posibles malentendidos y cómo el asistente podría 'aprender' a mejorar su 'escucha'.",
           example: "Usuario: 'Hola asistente, ¿qué tiempo hace hoy?' Asistente: 'Percibo que quieres saber el clima. En [Ciudad], la temperatura es de X grados...'\nUsuario: '¿Y mañana?' Asistente: 'Necesito más información. ¿Te refieres a mañana en la misma ciudad o en otro lugar?'",
         },
-        relatedLinks: [
-          { text: "Artículo: ¿Qué es la Visión por Computadora?", url: "https://www.bbvaopenmind.com/tecnologia/inteligencia-artificial/que-es-la-vision-por-computadora/" },
-          { text: "Video: Procesamiento del Lenguaje Natural explicado", url: "https://www.youtube.com/watch?v=PLN_conceptos_clave" },
-          { text: "Quiz interactivo sobre Percepción de la IA", url: "https://www.ejemplo.org/quiz-percepcion-avanzado" },
-        ],
+        relatedLinks: "curso/quinto/persepcionbasica"
       },
       {
         id: "representacion-y-razonamiento",
@@ -891,10 +830,7 @@ export const ai4k12IdeasData = [
           description: "Elige un juego de estrategia simple (ej. damas, un juego de cartas con pocas reglas). Diseña el 'árbol de decisiones' o las reglas lógicas que una IA seguiría para jugar de forma inteligente y ganar. Puedes usar un diagrama o un listado de 'si... entonces...'",
           example: "Para las damas: 'SI puedo capturar una pieza, ENTONCES capturo la pieza. SI no puedo capturar, ENTONCES muevo hacia adelante.'",
         },
-        relatedLinks: [
-          { text: "Artículo: ¿Qué son los sistemas expertos?", url: "https://www.ejemplo.com/sistemas-expertos" },
-          { text: "Video: Cómo los algoritmos juegan ajedrez", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=abcdef3" },
-        ],
+        relatedLinks: "curso/quinto/mateia"
       },
       {
         id: "aprendizaje",
@@ -927,10 +863,7 @@ export const ai4k12IdeasData = [
           description: "Utiliza una herramienta de Machine Learning accesible (como Google Teachable Machine o Scratch con extensiones de IA). Recopila tus propios dibujos simples (ej. círculos, cuadrados, triángulos) como 'datos de entrenamiento'. Entrena el modelo para que la IA los reconozca. Luego, pruébalo y observa qué tan bien 'aprendió'.",
           example: "Puedes grabar tu voz diciendo 'sí' y 'no' para entrenar a la IA a reconocer esas palabras.",
         },
-        relatedLinks: [
-          { text: "Video: ¿Qué es el aprendizaje por refuerzo?", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=abcdef5" },
-          { text: "Artículo: ¿Cómo funcionan las redes neuronales?", url: "https://www.ejemplo.com/redes-neuronales" },
-        ],
+        relatedLinks: "curso/quinto/aprendeia"
       },
       {
         id: "interaccion-natural",
@@ -963,10 +896,7 @@ export const ai4k12IdeasData = [
           description: "Imagina que diseñas un robot social para ayudar a los estudiantes en una clase. Escribe un diálogo entre un estudiante y este robot. Incluye cómo el robot podría: a) entender una pregunta difícil, b) dar una pista, c) animar al estudiante. ¿Cómo harías que el robot suene amable y útil?",
           example: "Estudiante: 'No entiendo este problema de matemáticas.' Robot: 'Entiendo que el problema es un poco difícil. ¿Quieres que te dé un ejemplo similar?'",
         },
-        relatedLinks: [
-          { text: "Artículo: Grandes Modelos de Lenguaje (LLMs)", url: "https://www.ejemplo.com/llms" },
-          { text: "Video: Robótica social en la vida real", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=abcdef7" },
-        ],
+        relatedLinks: "curso/quinto/interaccion"
       },
       {
         id: "impacto-social",
@@ -999,11 +929,7 @@ export const ai4k12IdeasData = [
           description: "Elige uno de los siguientes dilemas éticos de la IA y prepara argumentos a favor y en contra. Presenta tu postura y las razones detrás de ella. Dilemas: a) Coches autónomos: ¿quién es responsable en caso de accidente? b) IA en la vigilancia: ¿seguridad o invasión de privacidad? c) IA en el arte: ¿es arte si lo crea una máquina?",
           example: "Para el coche autónomo: A favor de la IA: 'Puede reaccionar más rápido que un humano'. En contra: 'Si falla, ¿quién asume la culpa?'",
         },
-        relatedLinks: [
-          { text: "Artículo: Ética en la Inteligencia Artificial", url: "https://www.bbvaopenmind.com/tecnologia/inteligencia-artificial/etica-inteligencia-artificial-desarrollo-retos/" },
-          { text: "Video: Los dilemas de la IA", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=abcdef9" },
-          { text: "Reporte de la UNESCO sobre la Ética de la IA", url: "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" },
-        ],
+        relatedLinks: "curso/quinto/trivia"
       },
     ],
   },

@@ -151,7 +151,8 @@ const allIdeasForCourse = currentCourseData?.ideas || [];
       )}
 
        {/* "Ver actividad" button - NEW SECTION */}
-      {(
+      { currentIdeaData.relatedLinks != '' && 
+      (
         <section class="mb-12 text-center">
           <a
             href={`${currentIdeaData.relatedLinks}`} 
