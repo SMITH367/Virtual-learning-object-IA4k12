@@ -1,0 +1,30 @@
+---
+
+import nivelesPorGrado from "../../../data/nivelesPorGrado.js";
+import ChatBot from '../../../components/games/ChatBot.jsx'; // Importa el componente React
+import Header from "../../../components/layout/Navbar.astro";
+export async function getStaticPaths() {
+  // Obtiene todos los grados definidos en tu objeto de datos
+  const grados = Object.keys(nivelesPorGrado);
+  return grados.map(grado => ({
+    params: { grado }
+  }));
+}
+
+const { grado } = Astro.params;
+const data = nivelesPorGrado[grado] || nivelesPorGrado["primero"];
+
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OVA</title>
+  </head>
+  <body class="">
+     <Header />
+    <ChatBot courseId={grado}  client:load/>
+  </body>
+</html>
