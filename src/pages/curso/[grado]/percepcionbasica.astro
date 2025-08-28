@@ -1,0 +1,113 @@
+---
+// Importa el componente de React.
+import PercepcionBasica from '../../../components/games/PercepcionBasica';
+import "../../../styles/tailwind.css";
+// 1. FUNCIÓN OBLIGATORIA: Define las rutas para los 6 grados
+export async function getStaticPaths() {
+    return [
+        { params: { grado: 'grado1' } },
+        { params: { grado: 'grado2' } },
+        { params: { grado: 'grado3' } },
+        { params: { grado: 'grado4' } },
+        { params: { grado: 'grado5' } }, // NUEVO
+        { params: { grado: 'grado6' } }, // NUEVO
+    ];
+}
+
+// 2. Obtener el parámetro de la URL
+const { grado } = Astro.params;
+
+// 3. Definir las props y el contenido estático según el grado
+let percepcionProps;
+let contenidoEstatico; 
+
+switch (grado) {
+    case 'grado1':
+        percepcionProps = { grado: 'grado1', titulo: '1° 👁️ VEO', descripcion: 'PERCIBE formas simples. ¡Ayúdalo a VER!' };
+        contenidoEstatico = 'La IA mira y clasifica figuras. Es más fácil clasificar formas simples.';
+        break;
+    case 'grado2':
+        percepcionProps = { grado: 'grado2', titulo: '2° 👂 ESCUCHO', descripcion: 'PERCIBE sonidos clave (alertas). ¡Ayúdalo a OÍR!' };
+        contenidoEstatico = 'La IA escucha ruidos, pero solo presta atención al sonido más importante.';
+        break;
+    case 'grado3':
+        percepcionProps = { grado: 'grado3', titulo: '3° 📊 PREDIGO', descripcion: 'PERCIBE patrones en los datos. ¡Ayúdalo a ADIVINAR!' };
+        contenidoEstatico = 'Si la IA ve un patrón muchas veces, ¡sabe qué va a pasar después!';
+        break;
+    case 'grado4':
+        percepcionProps = { grado: 'grado4', titulo: '4° 🧠 APRENDO', descripcion: 'PERCIBE con prueba y error. ¡Ayúdalo a APRENDER!' };
+        contenidoEstatico = 'Cada vez que el Robot choca (🛑) o recibe un premio (⭐), ¡aprende algo nuevo!';
+        break;
+    case 'grado5':
+        percepcionProps = { grado: 'grado5', titulo: '5° 👃 HUELE', descripcion: 'PERCIBE la composición química (peligro). ¡Ayúdalo a OLER!' };
+        contenidoEstatico = 'Los robots huelen y saborean analizando las moléculas y la composición química. ¡Identifica el peligro!';
+        break;
+    case 'grado6':
+        percepcionProps = { grado: 'grado6', titulo: '6° 🧍 SIENTO', descripcion: 'PERCIBE su propio estado (Equilibrio/Tareas). ¡Ayúdalo a SENTIRSE!' };
+        contenidoEstatico = 'La IA sabe cómo está su cuerpo (sensores de equilibrio) y qué debe hacer para completar su tarea.';
+        break;
+    default:
+        percepcionProps = { grado: 'grado1', titulo: 'Error', descripcion: 'Lección no encontrada.' };
+        contenidoEstatico = '¡Vuelve a la página principal!';
+}
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA IA - {percepcionProps.titulo}</title>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <main class="max-w-4xl mx-auto p-4 sm:p-8">
+        <header>
+            <h1 class="text-4xl font-extrabold text-center mb-6 text-gray-800">
+                🤖 La IA y Sus Super-Sentidos (6 Grados)
+            </h1>
+            
+            <nav class="text-center mb-8 pb-4 border-b-4 border-gray-300">
+                <span class="font-bold text-gray-700 mr-2 text-xl">Toca el Grado:</span>
+                {['grado1', 'grado2', 'grado3', 'grado4', 'grado5', 'grado6'].map(g => {
+                    const colorMap = {
+                        'grado1': 'bg-red-600',
+                        'grado2': 'bg-yellow-600',
+                        'grado3': 'bg-green-600',
+                        'grado4': 'bg-blue-600',
+                        'grado5': 'bg-orange-600', // Nuevo
+                        'grado6': 'bg-purple-600', // Nuevo
+                    };
+                    const isCurrent = grado === g;
+                    
+                    return (
+                        <a 
+                            href={`/curso/${g}`} 
+                            class={`mx-2 text-xl font-extrabold p-3 rounded-xl shadow-md transition duration-300 
+                                ${colorMap[g]} text-white 
+                                ${isCurrent ? 'opacity-100 ring-4 ring-offset-2 ring-gray-400' : 'opacity-80 hover:opacity-100'}
+                            `}
+                        >
+                            {g.replace('grado', '')}°
+                        </a>
+                    );
+                })}
+            </nav>
+        </header>
+
+        <p class="text-2xl leading-relaxed mb-6 bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+            {contenidoEstatico}
+        </p>
+
+        <PercepcionBasica
+            grado={percepcionProps.grado}
+            titulo={percepcionProps.titulo}
+            descripcion={percepcionProps.descripcion}
+            client:load 
+        />
+        
+        <footer class="mt-8 text-center text-gray-500 text-sm">
+            <p>Proyecto educativo: ¡Los robots están aprendiendo contigo!</p>
+        </footer>
+    </main>
+</body>
+</html>
