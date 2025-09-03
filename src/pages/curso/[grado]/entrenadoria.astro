@@ -1,0 +1,33 @@
+---
+// Importa el componente de React para el juego.
+import {JuegoRobot} from '../../../components/games/IAtrainer.jsx';
+import nivelesPorGrado from "../../../data/nivelesPorGrado.js";
+import "../../../styles/tailwind.css";
+
+export async function getStaticPaths() {
+  // Obtiene todos los grados definidos en tu objeto de datos
+  const grados = Object.keys(nivelesPorGrado);
+  return grados.map(grado => ({
+    params: { grado }
+  }));
+}
+
+const { grado } = Astro.params;
+const data = nivelesPorGrado[grado] || nivelesPorGrado["primero"];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OVA IA - Entrenando a mi Robot</title>
+</head>
+<body class="min-h-screen p-4">
+<main class="max-w-5xl mx-auto py-8">
+<a href="/" class="text-blue-600 hover:underline mb-8 inline-block">← Volver al inicio</a>
+
+<JuegoRobot client:load />
+</main>
+</body>
+</html>
