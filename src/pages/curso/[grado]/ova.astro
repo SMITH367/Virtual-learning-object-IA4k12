@@ -1,5 +1,6 @@
 ---
 import { ovaDatasets } from "../../../data/ovaDatasets.js";
+import Header from '../../../components/layout/Navbar.astro';
 import OVAWrapper from '../../../components/ova/OVAWrapper.jsx';
 
 // Esta función le dice a Astro qué rutas dinámicas generar
@@ -18,7 +19,8 @@ const dataset = ovaDatasets.find(ds => ds.course === grado) || { items: [], targ
     <meta charset="UTF-8" />
     <title>OVA - Grado {grado}</title>
   </head>
-  <body class="p-4 font-sans bg-white min-h-screen">
+  <body class="font-sans bg-white min-h-screen">
+    <Header/>
     <h1 class="text-2xl font-bold mb-4">Curso- {grado}</h1>
     <OVAWrapper client:load items={dataset.items} target={dataset.target} />
   </body>

@@ -1,12 +1,13 @@
 ---
 import IaMachineLearning from '../../../components/games/MachineLearning.jsx';
+import Header from "../../../components/layout/Navbar.astro";
 // 1. FUNCIÓN OBLIGATORIA: Define las rutas para los 4 grados
 export async function getStaticPaths() {
     return [
-        { params: { grado: 'primero' } },
         { params: { grado: 'segundo' } },
         { params: { grado: 'tercero' } },
         { params: { grado: 'cuarto' } },
+        { params: { grado: 'quinto' } },
     ];
 }
 
@@ -25,6 +26,7 @@ const gradoProps = { grado: grado };
     <title>OVA ML - Grado {gradoProps.grado.replace('grado', '')}°</title>
 </head>
 <body class="bg-gray-50 min-h-screen">
+    <Header />
     <main class="max-w-4xl mx-auto p-4 sm:p-8">
         <header>
             <h1 class="text-4xl font-extrabold text-center mb-6 text-gray-800">

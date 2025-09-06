@@ -2,6 +2,7 @@
 // filepath: src/pages/curso/[grado]/interaccion.astro
 import HablemosRobot from "../../../components/interaccion/HablemosRobot.jsx";
 import nivelesPorGrado from "../../../data/nivelesPorGrado.js";
+import Header from "../../../components/layout/Navbar.astro";
 import "../../../styles/tailwind.css";
 
 export async function getStaticPaths() {
@@ -23,6 +24,7 @@ const data = nivelesPorGrado[grado] || nivelesPorGrado["primero"];
     <title>¡Hablemos, Robot!</title>
   </head>
   <body>
+    <Header />
     <HablemosRobot client:load niveles={data.niveles} portada={data.portada} grado={grado} />
     <!-- ...resto del contenido... -->
   </body>

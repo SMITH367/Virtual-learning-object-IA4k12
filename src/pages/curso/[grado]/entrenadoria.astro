@@ -2,6 +2,7 @@
 // Importa el componente de React para el juego.
 import {JuegoRobot} from '../../../components/games/IAtrainer.jsx';
 import nivelesPorGrado from "../../../data/nivelesPorGrado.js";
+import Header from "../../../components/layout/Navbar.astro";
 import "../../../styles/tailwind.css";
 
 export async function getStaticPaths() {
@@ -26,7 +27,7 @@ const data = nivelesPorGrado[grado] || nivelesPorGrado["primero"];
 <body class="min-h-screen p-4">
 <main class="max-w-5xl mx-auto py-8">
 <a href="/" class="text-blue-600 hover:underline mb-8 inline-block">← Volver al inicio</a>
-
+<Header />
 <JuegoRobot client:load />
 </main>
 </body>

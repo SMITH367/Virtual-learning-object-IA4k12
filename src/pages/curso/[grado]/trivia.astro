@@ -1,6 +1,6 @@
 ---
 import { trivias } from "../../../data/trivia.js";
-
+import Header from '../../../components/layout/Navbar.astro';
 // Generar los paths dinámicos para cada curso
 export async function getStaticPaths() {
   return trivias.map((trivia) => ({
@@ -19,11 +19,14 @@ const { grado } = Astro.params;
     <meta charset="UTF-8" />
     <title>Trivia - Curso {grado}</title>
   </head>
-  <body class="p-10 bg-gray-100">
-    <h1 class="text-2xl font-bold mb-6 text-indigo-800">Trivia - Curso {grado}</h1>
+  <body class="bg-gray-100">
+    <Header/>
+    <div class="p-10">
+      <h1 class="text-2xl font-bold mb-6 text-indigo-800">Trivia - Curso {grado}</h1>
+      <Triviaa client:idle course={grado} />
 
-    <Triviaa client:idle course={grado} />
-
+    </div>
+    
   </body>
 </html>
 
