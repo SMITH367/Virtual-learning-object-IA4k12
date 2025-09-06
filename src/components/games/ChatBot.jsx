@@ -285,7 +285,7 @@ const ChatBot = () => {
   };
 
   return (
-   <div className="flex flex-col h-[500px] border border-gray-300 rounded-xl shadow-2xl bg-gray-100 overflow-hidden">
+   <div className="flex flex-col h-[90vh] border border-gray-300 rounded-xl shadow-2xl bg-gray-100 overflow-hidden">
     
     {/* Encabezado del Chat */}
     <div className="p-4 bg-indigo-600 text-white shadow-lg">
@@ -293,7 +293,7 @@ const ChatBot = () => {
     </div>
 
     {/* Área de Mensajes */}
-    <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white">
+    <div className="flex-1 overflow-y-auto p-4 bg-white">
         {messages.map((msg) => (
             <div 
                 key={msg.id} 
