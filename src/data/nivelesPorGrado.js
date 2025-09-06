@@ -543,7 +543,13 @@ const nivelesPorGrado = {
         ],
       },
     },
-  },
+  },sexto :{},
+  septimo:{},
+  octavo:{},
+  noveno:{},
+  decimo:{},
+  undecimo:{}
+
 };
 
 export default nivelesPorGrado;

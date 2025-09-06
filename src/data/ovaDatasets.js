@@ -1,6 +1,6 @@
 export const ovaDatasets = [
   {
-    course: "primero",
+    course: "decimo",
     target: "manzana",
     items: [
         { "image": "/images/ova/m1.jpeg", "label": "manzana" },
@@ -21,7 +21,7 @@ export const ovaDatasets = [
     ]
   },
   {
-    course: "segundo",
+    course: "undecimo",
     target: "gato",
     items: [
         { "image": "/images/ova/bp1.jpeg", "label": "no-gato" },
