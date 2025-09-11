@@ -6,7 +6,7 @@ const GRADO_CHALLENGES = {
     primero: {
         color: 'bg-indigo-600', bg: 'bg-indigo-50',
         titulo: 'GRADO 1: INICIACIÓN (Ciclo Básico)',
-        descripcion: 'Aprende los 4 pasos fundamentales del Machine Learning. ¡La base!',
+        descripcion: 'Aprende los 2 pasos fundamentales del Machine Learning. ¡La base!',
         claseVisual: "text-[140px] animate-bounce-slow",
         fases: {
             fase1: {
@@ -128,7 +128,7 @@ const GRADO_CHALLENGES = {
     },
     cuarto: {
         color: 'bg-amber-600', bg: 'bg-amber-50',
-        titulo: 'GRADO 4: MAESTRÍA (El Ciclo Completo)',
+        titulo: 'GRADO 2: MAESTRÍA (El Ciclo Completo)',
         descripcion: '¡El reto final! Demuestra que entiendes el flujo completo de la IA.',
         claseVisual: "text-[100px] animate-none",
         fases: {
@@ -210,7 +210,7 @@ export default function IaMachineLearning({ grado }) {
     };
     
     // Clases de botón dinámicas
-    const buttonClasses = `${gradoData.color} px-10 py-5 rounded-3xl hover:opacity-90 transition duration-300 m-4 font-extrabold text-3xl shadow-2xl border-4 border-${gradoData.color.replace('bg-', '').replace('600', '400')} transform hover:scale-105`;
+    const buttonClasses = `${gradoData.color} px-10 py-5 rounded-3xl hover:opacity-90 transition duration-300 m-2 font-extrabold text-3xl shadow-2xl border-2 border-${gradoData.color.replace('bg-', '').replace('600', '400')} transform hover:scale-105`;
 
     // Renderizado del Resultado
     const renderResultado = () => {
@@ -222,13 +222,13 @@ export default function IaMachineLearning({ grado }) {
         const isFinalPhase = faseActual === Object.keys(gradoData.fases).length;
 
         return (
-            <div className={`p-8 mt-5 rounded-xl border-4 ${resultadoClases} transition-all duration-500 transform scale-105`}>
+            <div className={`p-8 rounded-xl border-2 ${resultadoClases} transition-all duration-500 transform scale-105`}>
                 <p className="text-5xl font-black mb-6">{mensajeResultado}</p>
                 
                 {esGanado && !isFinalPhase && (
                     <button
                         onClick={handleNext}
-                        className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 mt-4"
+                        className="bg-blue-600 text-white px-8 py-2 rounded-full hover:bg-blue-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 mt-2"
                     >
                         Siguiente Fase ({faseActual + 1} de {Object.keys(gradoData.fases).length}) ➡️
                     </button>
@@ -237,16 +237,15 @@ export default function IaMachineLearning({ grado }) {
                 {esGanado && isFinalPhase && (
                     <a
                         href={grado === 'grado4' ? '/ml/cursos' : `/ml/grado${parseInt(grado.replace('grado', '')) + 1}`}
-                        className="bg-purple-600 px-8 py-4 rounded-full hover:bg-purple-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 mt-4 inline-block"
+                        className="bg-purple-600 px-8 py-2 rounded-full hover:bg-purple-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 mt-2 inline-block"
                     >
-                        {grado === 'grado4' ? '¡GRADO 4 LOGRADO! Volver a Cursos 🏆' : `Ir al Grado ${parseInt(grado.replace('grado', '')) + 1}° 🎉`}
+                        {grado === 'grado4' ? '¡GRADO 2 LOGRADO! Volver a Cursos 🏆' : `Ir al Grado ${parseInt(grado.replace('grado', '')) + 1}° 🎉`}
                     </a>
-                )}
-                
+                )}                
                 {!esGanado && (
                     <button
                         onClick={() => { setEstadoJuego('inicio'); setMensajeResultado(''); }}
-                        className="bg-red-600 text-white px-8 py-4 rounded-full hover:bg-red-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 mt-4"
+                        className="bg-red-600 text-white px-8 py-2 rounded-full hover:bg-red-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 mt-2"
                     >
                         Reintentar Fase {faseActual} 🔄
                     </button>
@@ -261,20 +260,20 @@ export default function IaMachineLearning({ grado }) {
             return renderResultado();
         }
 
-        const promptClasses = "mb-8 text-3xl font-extrabold text-gray-800 p-2 border-b-2 border-gray-300";
+        const promptClasses = "mb-2 text-3xl font-extrabold text-gray-800 p-2 border-b-2 border-gray-300";
 
         // Estructura visual para el profesor en la fase 2
         const profesorDisplay = faseActual === 2 && (
-            <div className={`bg-white border-4 border-gray-500 p-6 mb-8 rounded-xl shadow-inner text-5xl font-black text-${gradoData.color.replace('bg-', '').replace('600', '700')} w-full`}>
+            <div className={`bg-white border-2 border-gray-500 p-6 mb-2 rounded-xl shadow-inner text-5xl font-black text-${gradoData.color.replace('bg-', '').replace('600', '700')} w-full`}>
                 PROFESOR: {opcionCorrecta?.visual}
             </div>
         );
 
         return (
-            <div className="flex flex-col items-center p-4">
-                {faseActual !== 4 && <div className="mb-8"><span className={gradoData.claseVisual}>{faseActual === 1 ? '🧠' : faseActual === 2 ? '🧑‍🏫' : faseActual === 3 ? '🧩' : ''}</span></div>}
+            <div className="flex flex-col items-center p-2">
+                {faseActual !== 2 && <div className="mb-2"><span className={gradoData.claseVisual}>{faseActual === 1 ? '🧠' : faseActual === 2 ? '🧑‍🏫' : faseActual === 3 ? '🧩' : ''}</span></div>}
                 
-                {faseActual === 4 && (
+                {faseActual === 2 && (
                     <div className="flex items-center justify-center space-x-8 mb-10">
                         <div className="flex flex-col items-center">
                             <span className="text-5xl font-bold text-gray-700 mb-2">INPUT</span>
@@ -288,14 +287,14 @@ export default function IaMachineLearning({ grado }) {
                         <span className="text-8xl text-gray-400">➡️</span>
                         <div className="flex flex-col items-center">
                             <span className="text-5xl font-bold text-gray-700 mb-2">PATRÓN</span>
-                            <div className={`bg-white border-4 border-gray-500 p-3 rounded-xl shadow-inner text-4xl font-black`}>
+                            <div className={`bg-white border-2 border-gray-500 p-3 rounded-xl shadow-inner text-4xl font-black`}>
                                 {faseData.prompt.split('(')[1]?.split(')')[0]}
                             </div>
                         </div>
                     </div>
                 )}
                 
-                <h3 className={`text-3xl font-extrabold mb-4 border-b-2 pb-2 text-${gradoData.color.replace('bg-', '').replace('600', '800')}`}>
+                <h3 className={`text-3xl font-extrabold mb-2 border-b-2 pb-2 text-${gradoData.color.replace('bg-', '').replace('600', '800')}`}>
                     {faseData.titulo}
                 </h3>
                 <p className={promptClasses}>{faseData.prompt}</p>
@@ -326,11 +325,11 @@ export default function IaMachineLearning({ grado }) {
             const buttonText = grado === 'grado4' ? 'Volver a Cursos 🏆' : `Ir al Grado ${parseInt(grado.replace('grado', '')) + 1}° 🎉`;
 
             return (
-                <div className={`p-10 my-8 rounded-3xl shadow-2xl text-center border-4 border-purple-600 bg-purple-100`}>
+                <div className={`p-10 my-8 rounded-3xl shadow-2xl text-center border-2 border-purple-600 bg-purple-100`}>
                     <h2 className="text-5xl font-black text-purple-900 mb-6">¡GRADO {grado.replace('grado', '')}° MAESTRÍA LOGRADA!</h2>
-                    <p className="text-2xl text-gray-700 mb-8">Has completado los 4 retos del ciclo de Machine Learning: **Input, Supervisado, No Supervisado y Predicción.**</p>
+                    <p className="text-2xl text-gray-700 mb-8">Has completado los 2 retos del ciclo de Machine Learning: **Input, Supervisado, No Supervisado y Predicción.**</p>
                     <a href={nextLink}
-                        className="bg-purple-600 px-8 py-4 rounded-full hover:bg-purple-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 inline-block"
+                        className="bg-purple-600 px-8 py-2 rounded-full hover:bg-purple-700 transition duration-300 font-bold text-xl shadow-xl transform hover:scale-105 inline-block"
                     >
                         {buttonText}
                     </a>
@@ -341,11 +340,11 @@ export default function IaMachineLearning({ grado }) {
         const headerColorClass = `text-${gradoData.color.replace('bg-', '').replace('600', '900')} border-${gradoData.color.replace('bg-', '').replace('600', '500')}`;
 
         return (
-            <div className={`ia-container p-8 my-8 rounded-3xl shadow-2xl ${gradoData.bg} text-center border-4 border-${gradoData.color.replace('bg-', '').replace('600', '400')}`} key={faseActual}>
-                <h2 className={`text-4xl font-extrabold ${headerColorClass} border-b-4 pb-4 mb-6`}>
+            <div className={`ia-container p-8 my-8 rounded-3xl shadow-2xl ${gradoData.bg} text-center border-2 border-${gradoData.color.replace('bg-', '').replace('600', '400')}`} key={faseActual}>
+                <h2 className={`text-4xl font-extrabold ${headerColorClass} border-b-2 pb-2 mb-6`}>
                     {gradoData.titulo}
                 </h2>
-                <p className="descripcion-juego text-2xl mb-8 text-gray-700 font-semibold p-2 bg-white rounded-lg shadow-inner">
+                <p className="descripcion-juego text-2xl mb-2 text-gray-700 font-semibold p-2 bg-white rounded-lg shadow-inner">
                     {gradoData.descripcion}
                 </p>
                 {renderFase()}

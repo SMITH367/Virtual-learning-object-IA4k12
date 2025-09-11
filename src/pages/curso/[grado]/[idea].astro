@@ -53,35 +53,7 @@ const allIdeasForCourse = currentCourseData?.ideas || [];
         </p>
       </header>
 
-      {/* Main Multimedia Section */}
-      <div class="mb-12 p-4 md:p-6 bg-indigo-50 rounded-2xl shadow-inner border border-indigo-200">
-        {currentIdeaData.multimedia.type === 'image' && (
-          <img
-            src={currentIdeaData.multimedia.src}
-            alt={currentIdeaData.multimedia.alt}
-            class="w-full h-auto rounded-xl shadow-lg border border-gray-200 object-cover"
-          />
-        )}
-        {currentIdeaData.multimedia.type === 'video' && (
-          <div class="relative w-full overflow-hidden rounded-xl shadow-lg border border-gray-200" style="padding-top: 56.25%;">
-            <iframe
-              class="absolute top-0 left-0 w-full h-full"
-              src={currentIdeaData.multimedia.src}
-              title={currentIdeaData.multimedia.alt}
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        )}
-        {currentIdeaData.multimedia.type === 'animation' && (
-          <img
-            src={currentIdeaData.multimedia.src}
-            alt={currentIdeaData.multimedia.alt}
-            class="w-full h-auto rounded-xl shadow-lg border border-gray-200 object-cover"
-          />
-        )}
-      </div>
+   
 
       {/* Sections with Content and Optional Multimedia */}
       {currentIdeaData.sections && currentIdeaData.sections.length > 0 && (
