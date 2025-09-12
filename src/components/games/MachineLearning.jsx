@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 // --- DATOS ÚNICOS POR GRADO Y FASE ---
 // Se recomienda mantener los datos fuera del componente para mejor organización y reusabilidad
 const GRADO_CHALLENGES = {
-    primero: {
+    segundo: {
         color: 'bg-indigo-600', bg: 'bg-indigo-50',
         titulo: 'GRADO 1: INICIACIÓN (Ciclo Básico)',
         descripcion: 'Aprende los 2 pasos fundamentales del Machine Learning. ¡La base!',
@@ -44,7 +44,7 @@ const GRADO_CHALLENGES = {
             }
         }
     },
-    segundo: {
+    tercero: {
         color: 'bg-teal-600', bg: 'bg-teal-50',
         titulo: 'GRADO 2: INTERMEDIO (Enfoque en Datos)',
         descripcion: 'Repasa el ciclo enfocándote en la calidad y el tipo de datos.',
@@ -85,7 +85,7 @@ const GRADO_CHALLENGES = {
             }
         }
     },
-    tercero: {
+    cuarto: {
         color: 'bg-pink-600', bg: 'bg-pink-50',
         titulo: 'GRADO 3: AVANZADO (Enfoque en Procesamiento)',
         descripcion: 'Analiza a fondo las diferencias entre Aprendizaje Supervisado y No Supervisado.',
@@ -126,7 +126,7 @@ const GRADO_CHALLENGES = {
             }
         }
     },
-    cuarto: {
+    quinto: {
         color: 'bg-amber-600', bg: 'bg-amber-50',
         titulo: 'GRADO 2: MAESTRÍA (El Ciclo Completo)',
         descripcion: '¡El reto final! Demuestra que entiendes el flujo completo de la IA.',
